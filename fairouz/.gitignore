@@ -1,0 +1,7 @@
+__pycache__/
+audio_venv/
+dino_venv/
+dino/
+embedding_env/
+Mistral-7B-Instruct-v0.2-AWQ/
+mxbai-embed-large-v1/

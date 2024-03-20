@@ -1,0 +1,70 @@
+import torch
+import torchvision.transforms as transforms
+import requests
+
+from PIL import Image
+from io import BytesIO
+
+resize = [transforms.Resize((224, 224)), transforms.ToTensor()]
+transformation = transforms.Compose(resize)
+
+# url = 'https://i1.sndcdn.com/artworks-SwoYPxk4GdfVzdkD-r6bHlg-t500x500.jpg'
+# response = requests.get(url)
+# img = Image.open(BytesIO(response.content))
+
+dinov2_vitb14 = torch.hub.load('facebookresearch/dinov2', 'dinov2_vitb14')
+dinov2_vitb14.to('cuda')
+
+# test = transformation(img).to('cuda')
+
+# embedding = dinov2_vitb14.forward(torch.unsqueeze(test, 0)).numpy(force=True)
+
+# print(embedding.squeeze(0).tolist(), len(embedding.squeeze(0).tolist()))
+
+
+
+def load_image(image_file):
+    image = Image.open(image_file)
+    return image
+
+
+import json
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi import File, UploadFile
+from fastapi import FastAPI, HTTPException, Body, Depends, status
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.security import OAuth2PasswordBearer
+
+api_keys = [
+    "543c7086-c880-45de-8bce-6c9c906293bb"
+]  
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+def api_key_auth(api_key: str = Depends(oauth2_scheme)):
+    if api_key not in api_keys:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Forbidden"
+        )
+
+app = FastAPI(docs_url="/")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],
+    allow_credentials=True,
+    allow_methods=['*'],
+    allow_headers=['*'],
+)
+@app.post("/embed/", dependencies=[Depends(api_key_auth)])
+async def embed_image(file: UploadFile):
+    torch.cuda.empty_cache()
+    image = load_image(file.file)
+    image = transformation(image).to('cuda')
+    try:
+        embedding = dinov2_vitb14.forward(torch.unsqueeze(image, 0)).numpy(force=True)
+        return json.dumps({"embedding": embedding.squeeze(0).tolist()})
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"{e}")
+    
+
