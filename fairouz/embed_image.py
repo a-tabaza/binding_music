@@ -1,12 +1,11 @@
 import torch
 import torchvision.transforms as transforms
-import requests
 
 from PIL import Image
-from io import BytesIO
 
 resize = [transforms.Resize((224, 224)), transforms.ToTensor()]
 transformation = transforms.Compose(resize)
+torch.hub.set_dir("/workspace/fairouz/fairouz_conf/fairouz/.hub/")
 
 dinov2_vitb14 = torch.hub.load('facebookresearch/dinov2', 'dinov2_vitb14')
 dinov2_vitb14.to('cuda')
@@ -44,6 +43,7 @@ app.add_middleware(
     allow_methods=['*'],
     allow_headers=['*'],
 )
+
 @app.post("/embed/", dependencies=[Depends(api_key_auth)])
 async def embed_image(file: UploadFile):
     torch.cuda.empty_cache()

@@ -9,3 +9,4 @@ dinov2/
 graph_venv/
 llm_venv/
 image_venv/
+.hub/

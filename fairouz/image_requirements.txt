@@ -1,0 +1,6 @@
+torch
+torchvision
+xformers
+pillow
+fastapi[all]
+python-multipart
