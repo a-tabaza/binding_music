@@ -15,7 +15,7 @@ Extract metadata from the following song lyrics.
 Output it in JSON format, it must adhere to the following schema:
 The key: "context", the value will be the a list of keywords that describes the paragraph, the list will have 5 keywords ONLY.
 The key: "summary", the value will be the summary or a short synopsis of the lyrics, the main theme.
-They key: "emotional_context", the value will be a list of keywords that describe the emotions within the song, the list will have 5 keywords ONLY.
+The key: "emotional_context", the value will be a list of keywords that describe the emotions within the song, the list will have 5 keywords ONLY.
 
 Do NOT under any circumstances, output anything that can't be parsed into valid JSON.
 Adhere to a word limit of 512 words MAX for any paragraph you generate.
