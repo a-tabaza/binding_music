@@ -8,20 +8,8 @@ from io import BytesIO
 resize = [transforms.Resize((224, 224)), transforms.ToTensor()]
 transformation = transforms.Compose(resize)
 
-# url = 'https://i1.sndcdn.com/artworks-SwoYPxk4GdfVzdkD-r6bHlg-t500x500.jpg'
-# response = requests.get(url)
-# img = Image.open(BytesIO(response.content))
-
 dinov2_vitb14 = torch.hub.load('facebookresearch/dinov2', 'dinov2_vitb14')
 dinov2_vitb14.to('cuda')
-
-# test = transformation(img).to('cuda')
-
-# embedding = dinov2_vitb14.forward(torch.unsqueeze(test, 0)).numpy(force=True)
-
-# print(embedding.squeeze(0).tolist(), len(embedding.squeeze(0).tolist()))
-
-
 
 def load_image(image_file):
     image = Image.open(image_file)
