@@ -13,4 +13,9 @@ if __name__ == "__main__":
     if sys.argv[1] == "jina":
         snapshot_download(repo_id="jinaai/jina-embeddings-v2-base-en", local_dir="./jina-embeddings-v2-base-en", local_dir_use_symlinks=False)
 
+    if sys.argv[1] == "bge":
+        snapshot_download(repo_id="BAAI/bge-large-en-v1.5", local_dir="./bge-large-en-v1.5", local_dir_use_symlinks=False)
+
+    if sys.argv[1] == "e5":
+        snapshot_download(repo_id="intfloat/e5-large-v2", local_dir="./e5-large-v2", local_dir_use_symlinks=False)
         

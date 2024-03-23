@@ -2,8 +2,8 @@ from sentence_transformers import SentenceTransformer
 from sentence_transformers.util import cos_sim
 
 
-model = SentenceTransformer("./mxbai-embed-large-v1")
-query = "Represent this sentence for searching relevant passages: {lyrics}"
+model = SentenceTransformer("./e5-large-v2")
+# query = "Represent this sentence for searching relevant passages: {lyrics}"
 
 combined_string = """
 The following is a summary of the lyrics:

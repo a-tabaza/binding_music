@@ -12,3 +12,5 @@ image_venv/
 .hub/
 CLIP-ViT-B-32-laion2B-s34B-b79K/
 jina-embeddings-v2-base-en/
+bge-large-en-v1.5/
+e5-large-v2
