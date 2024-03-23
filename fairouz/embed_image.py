@@ -12,6 +12,8 @@ dinov2_vitb14.to('cuda')
 
 def load_image(image_file):
     image = Image.open(image_file)
+    if image.mode != "RGB":
+        image = image.convert("RGB")
     return image
 
 
@@ -49,10 +51,10 @@ async def embed_image(file: UploadFile):
     torch.cuda.empty_cache()
     image = load_image(file.file)
     image = transformation(image).to('cuda')
+    embedding = dinov2_vitb14.forward(torch.unsqueeze(image, 0)).numpy(force=True)
     try:
-        embedding = dinov2_vitb14.forward(torch.unsqueeze(image, 0)).numpy(force=True)
         return json.dumps({"embedding": embedding.squeeze(0).tolist()})
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"{e}")
+        raise HTTPException(status_code=500, detail=f"{e | embedding}")
     
 
