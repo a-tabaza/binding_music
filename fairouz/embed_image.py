@@ -1,14 +1,15 @@
 import torch
-import torchvision.transforms as transforms
-
+# import torchvision.transforms as transforms
 from PIL import Image
+import open_clip
 
-resize = [transforms.Resize((224, 224)), transforms.ToTensor()]
-transformation = transforms.Compose(resize)
-torch.hub.set_dir("/workspace/fairouz/fairouz_conf/fairouz/.hub/")
+model, _, preprocess = open_clip.create_model_and_transforms('ViT-B-32', pretrained='/workspace/fairouz/fairouz_conf/fairouz/CLIP-ViT-B-32-laion2B-s34B-b79K/open_clip_pytorch_model.bin')
 
-dinov2_vitb14 = torch.hub.load('facebookresearch/dinov2', 'dinov2_vitb14')
-dinov2_vitb14.to('cuda')
+# resize = [transforms.Resize((224, 224)), transforms.ToTensor()]
+# transformation = transforms.Compose(resize)
+# torch.hub.set_dir("/workspace/fairouz/fairouz_conf/fairouz/.hub/")
+# dinov2_vitb14 = torch.hub.load('facebookresearch/dinov2', 'dinov2_vitb14')
+# dinov2_vitb14.to('cuda')
 
 def load_image(image_file):
     image = Image.open(image_file)
@@ -48,13 +49,15 @@ app.add_middleware(
 
 @app.post("/embed/", dependencies=[Depends(api_key_auth)])
 async def embed_image(file: UploadFile):
-    torch.cuda.empty_cache()
-    image = load_image(file.file)
-    image = transformation(image).to('cuda')
-    embedding = dinov2_vitb14.forward(torch.unsqueeze(image, 0)).numpy(force=True)
+    image = preprocess(load_image(file.file)).unsqueeze(0)
+    # image = load_image(file.file)
+    # image = transformation(image).to('cuda')
+    # embedding = dinov2_vitb14.forward(torch.unsqueeze(image, 0)).numpy(force=True)
+    with torch.no_grad(), torch.cuda.amp.autocast():
+        image_features = model.encode_image(image, normalize=True).numpy(force=True)
     try:
-        return json.dumps({"embedding": embedding.squeeze(0).tolist()})
+        return json.dumps({"embedding": image_features.squeeze(0).tolist()})
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"{e | embedding}")
+        raise HTTPException(status_code=500, detail=f"{e | image_features}")
     
 

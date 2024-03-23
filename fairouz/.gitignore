@@ -10,3 +10,5 @@ graph_venv/
 llm_venv/
 image_venv/
 .hub/
+CLIP-ViT-B-32-laion2B-s34B-b79K/
+jina-embeddings-v2-base-en/
