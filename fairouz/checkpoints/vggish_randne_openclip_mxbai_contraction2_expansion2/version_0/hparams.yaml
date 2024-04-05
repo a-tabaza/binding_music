@@ -1,0 +1,7 @@
+audio_size: 128
+contraction_factor: 2
+embedding_size: 128
+expansion_factor: 2
+graph_size: 128
+image_size: 512
+text_size: 1024
