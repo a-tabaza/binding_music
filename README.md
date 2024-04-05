@@ -1,4 +1,4 @@
-## Appendix
+# Fairouz
 ### Nomic Maps
 #### Text Embedding Maps
 - [BAAI/bge-large-en-v1.5](https://atlas.nomic.ai/data/omaralquishawi25/model-bge-1/map-)
