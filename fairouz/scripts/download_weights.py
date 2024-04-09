@@ -19,6 +19,3 @@ if __name__ == "__main__":
     if sys.argv[1] == "e5":
         snapshot_download(repo_id="intfloat/e5-large-v2", local_dir="./e5-large-v2", local_dir_use_symlinks=False)
         
-
-::# git config --global user.email "nthefag@gmail.com"
-# git config --global user.name "Abdulrahman Tabaza"
