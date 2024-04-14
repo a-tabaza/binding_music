@@ -1,4 +1,7 @@
-# Fairouz
+# Binding Text, Images, Graphs, and Audio for Music Representation Learning
+
+This repo contains the [code](https://github.com/a-tabaza/binding_music/blob/main/fairouz/notebooks/model.ipynb) for inference, and [evaluation](https://github.com/a-tabaza/binding_music/blob/main/fairouz/checkpoints/code/load_checkpoint.ipynb) for the paper Binding Text, Images, Graphs, and Audio for Music Representation Learning
+
 ### Nomic Maps
 #### Text Embedding Maps
 - [BAAI/bge-large-en-v1.5](https://atlas.nomic.ai/data/omaralquishawi25/model-bge-1/map-)
