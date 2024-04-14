@@ -1,6 +1,8 @@
 # Binding Text, Images, Graphs, and Audio for Music Representation Learning
-
+This repo is a work in progress.
 This repo contains the [code](https://github.com/a-tabaza/binding_music/blob/main/fairouz/notebooks/model.ipynb) for inference, and [evaluation](https://github.com/a-tabaza/binding_music/blob/main/fairouz/checkpoints/code/load_checkpoint.ipynb) for the paper ``Binding Text, Images, Graphs, and Audio for Music Representation Learning`` 
+
+The current state of this repo is not ideal, to help you navigate around checkpoints and inference, please refer to the following [sheet](https://docs.google.com/spreadsheets/d/11v6GrVe-0SJwl2Xqv_F5k20S1s6H_6B1uQ6oYKZL2Z0/edit?usp=sharing) temporarily while we prepare this repo.
 
 The code for embedding Text and Images is availabe in the scripts folder. For Audio Embeddings, code is available [here](https://github.com/a-tabaza/audio_embeddings), for Graph Embeddings, code is available [here](https://github.com/AbdelRahmanYaghi/FairouzConf)
 
