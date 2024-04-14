@@ -1,6 +1,9 @@
 # Binding Text, Images, Graphs, and Audio for Music Representation Learning
 
-This repo contains the [code](https://github.com/a-tabaza/binding_music/blob/main/fairouz/notebooks/model.ipynb) for inference, and [evaluation](https://github.com/a-tabaza/binding_music/blob/main/fairouz/checkpoints/code/load_checkpoint.ipynb) for the paper Binding Text, Images, Graphs, and Audio for Music Representation Learning
+This repo contains the [code](https://github.com/a-tabaza/binding_music/blob/main/fairouz/notebooks/model.ipynb) for inference, and [evaluation](https://github.com/a-tabaza/binding_music/blob/main/fairouz/checkpoints/code/load_checkpoint.ipynb) for the paper ``Binding Text, Images, Graphs, and Audio for Music Representation Learning`` 
+
+## Abstract
+In the field of Information Retrieval and Natural Language Processing, text embeddings play a significant role in tasks such as classification, clustering, and topic modeling. However, extending these embeddings to abstract concepts such as music, which involves multiple modalities, presents a unique challenge. Our work addresses this challenge by integrating rich multi-modal data into a unified joint embedding space. This space includes textual, visual, acoustic, and graph-based modality features. By doing so, we mirror cognitive processes associated with music interaction and overcome the disjoint nature of individual modalities. The resulting joint low-dimensional vector space facilitates retrieval, clustering, embedding space arithmetic, and cross-modal retrieval tasks. Importantly, our approach carries implications for music information retrieval and recommendation systems. Furthermore, we propose a novel multi-modal model that integrates various data types—text, images, graphs, and audio—for music representation learning. Our model aims to capture the complex relationships between different modalities, enhancing the overall understanding of music. By combining textual descriptions, visual imagery, graph-based structures, and audio signals, we create a comprehensive representation that can be leveraged for a wide range of music-related tasks. Notably, our model demonstrates promising results in music classification, recommendation systems.
 
 ### Nomic Maps
 #### Text Embedding Maps
@@ -23,3 +26,7 @@ This repo contains the [code](https://github.com/a-tabaza/binding_music/blob/mai
 #### Audio Embedding Maps
 - [Vggish](https://atlas.nomic.ai/data/omaralquishawi25/all-music-embeddings-march-23rd---mean/map)
 - [L3](https://atlas.nomic.ai/data/omaralquishawi25/model-openl3/map)
+
+### Multimodal Embedding Maps
+- [51k Data Pairs](https://atlas.nomic.ai/data/tyqnology/fairouz-vggish-randne-openclip-mxbai-200-epochs-contracted-51k-datapoints-euclidian/map)
+- [6k Data Pairs](https://atlas.nomic.ai/data/tyqnology/fairouz-vggish-randne-openclip-mxbai-200-epochs-contracted-dropout-euclidian/map) 
