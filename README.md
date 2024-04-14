@@ -31,6 +31,6 @@ In the field of Information Retrieval and Natural Language Processing, text embe
 - [Vggish](https://atlas.nomic.ai/data/omaralquishawi25/all-music-embeddings-march-23rd---mean/map)
 - [L3](https://atlas.nomic.ai/data/omaralquishawi25/model-openl3/map)
 
-### Multimodal Embedding Maps
+#### Multimodal Embedding Maps
 - [51k Data Pairs](https://atlas.nomic.ai/data/tyqnology/fairouz-vggish-randne-openclip-mxbai-200-epochs-contracted-51k-datapoints-euclidian/map)
 - [6k Data Pairs](https://atlas.nomic.ai/data/tyqnology/fairouz-vggish-randne-openclip-mxbai-200-epochs-contracted-dropout-euclidian/map) 
