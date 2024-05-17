@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torch.utils.data as data
 import lightning as L
 
 
@@ -14,20 +15,29 @@ class Encoder(L.LightningModule):
         expansion_factor,
         contraction_factor,
         embedding_size,
+        drop_out=0.2,
     ):
         super().__init__()
         self.embedding_size = embedding_size
         self.audio_encoder = nn.Sequential(
-            nn.Linear(audio_size, audio_size // contraction_factor), nn.ReLU()
+            nn.Linear(audio_size, audio_size // contraction_factor),
+            nn.ReLU(),
+            nn.Dropout(drop_out),
         )
         self.image_encoder = nn.Sequential(
-            nn.Linear(image_size, image_size // contraction_factor), nn.ReLU()
+            nn.Linear(image_size, image_size // contraction_factor),
+            nn.ReLU(),
+            nn.Dropout(drop_out),
         )
         self.text_encoder = nn.Sequential(
-            nn.Linear(text_size, text_size // contraction_factor), nn.ReLU()
+            nn.Linear(text_size, text_size // contraction_factor),
+            nn.ReLU(),
+            nn.Dropout(drop_out),
         )
         self.graph_encoder = nn.Sequential(
-            nn.Linear(graph_size, graph_size // contraction_factor), nn.ReLU()
+            nn.Linear(graph_size, graph_size // contraction_factor),
+            nn.ReLU(),
+            nn.Dropout(drop_out),
         )
         self.cat_size = (
             audio_size // contraction_factor
@@ -75,6 +85,8 @@ class Encoder(L.LightningModule):
         anchor, query, labels = batch
         anchor_embedding, query_embedding, labels = self(anchor, query, labels)
         distances = self.distance_metric(anchor_embedding, query_embedding)
+        # print(type(labels), type(labels_))
+        # print(labels, labels_)
         losses = 0.5 * labels[0].float() * distances.pow(2) + (
             1 - labels[0]
         ).float() * F.relu(self.margin - distances).pow(2)

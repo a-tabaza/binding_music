@@ -4,14 +4,15 @@ import torch.nn.functional as F
 import torch.utils.data as data
 import lightning as L
 
+
 class Encoder(L.LightningModule):
-    def __init__(self, audio_size, image_size, text_size, graph_size, expansion_factor, contraction_factor, embedding_size, drop_out = 0.2):
+    def __init__(self, audio_size, image_size, text_size, graph_size, expansion_factor, contraction_factor, embedding_size):
         super().__init__()
         self.embedding_size = embedding_size
-        self.audio_encoder = nn.Sequential(nn.Linear(audio_size, audio_size//contraction_factor), nn.ReLU(), nn.Dropout(drop_out))
-        self.image_encoder = nn.Sequential(nn.Linear(image_size, image_size//contraction_factor), nn.ReLU(), nn.Dropout(drop_out))
-        self.text_encoder = nn.Sequential(nn.Linear(text_size, text_size//contraction_factor), nn.ReLU(), nn.Dropout(drop_out))
-        self.graph_encoder = nn.Sequential(nn.Linear(graph_size, graph_size//contraction_factor), nn.ReLU(), nn.Dropout(drop_out))
+        self.audio_encoder = nn.Sequential(nn.Linear(audio_size, audio_size//contraction_factor), nn.ReLU())
+        self.image_encoder = nn.Sequential(nn.Linear(image_size, image_size//contraction_factor), nn.ReLU())
+        self.text_encoder = nn.Sequential(nn.Linear(text_size, text_size//contraction_factor), nn.ReLU())
+        self.graph_encoder = nn.Sequential(nn.Linear(graph_size, graph_size//contraction_factor), nn.ReLU())
         self.cat_size = (audio_size//contraction_factor + image_size//contraction_factor + text_size//contraction_factor + graph_size//contraction_factor)
         self.combined_encoder = nn.Sequential(nn.Linear(self.cat_size, self.cat_size * expansion_factor), nn.ReLU(), nn.Linear(self.cat_size * expansion_factor, embedding_size))
         self.distance_metric = lambda x, y: F.pairwise_distance(x, y, p=2)

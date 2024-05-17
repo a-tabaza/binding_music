@@ -3,6 +3,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.data as data
 import lightning as L
+
+
 class Encoder(L.LightningModule):
     def __init__(
         self,
