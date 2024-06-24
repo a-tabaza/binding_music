@@ -45,6 +45,7 @@ In the field of Information Retrieval and Natural Language Processing, text embe
 - [6k Data Pairs](https://atlas.nomic.ai/data/tyqnology/fairouz-vggish-randne-openclip-mxbai-200-epochs-contracted-dropout-euclidian/map) 
 
 ## Citation
+```
 @inproceedings{10.1145/3660853.3660886,
 author = {Tabaza, Abdulrahman and Quishawi, Omar and Yaghi, Abdelrahman and Qawasmeh, Omar},
 title = {Binding Text, Images, Graphs, and Audio for Music Representation Learning},
@@ -61,3 +62,4 @@ numpages = {8},
 location = {undefinedstanbul, Turkiye},
 series = {AICCONF '24}
 }
+```
