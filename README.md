@@ -1,5 +1,5 @@
 # Binding Text, Images, Graphs, and Audio for Music Representation Learning
-This repo contains the code for training, inference, and evaluation for the paper ``Binding Text, Images, Graphs, and Audio for Music Representation Learning`` 
+This repo contains the code for training, inference, and evaluation for the paper [``Binding Text, Images, Graphs, and Audio for Music Representation Learning``](https://doi.org/10.1145/3660853.3660886)
 
 To help you navigate around checkpoints and inference, please refer to the following [sheet](https://docs.google.com/spreadsheets/d/11v6GrVe-0SJwl2Xqv_F5k20S1s6H_6B1uQ6oYKZL2Z0/edit?usp=sharing).
 
@@ -43,3 +43,21 @@ In the field of Information Retrieval and Natural Language Processing, text embe
 ### Multimodal Embedding Maps
 - [51k Data Pairs](https://atlas.nomic.ai/data/tyqnology/fairouz-vggish-randne-openclip-mxbai-200-epochs-contracted-51k-datapoints-euclidian/map)
 - [6k Data Pairs](https://atlas.nomic.ai/data/tyqnology/fairouz-vggish-randne-openclip-mxbai-200-epochs-contracted-dropout-euclidian/map) 
+
+## Citation
+@inproceedings{10.1145/3660853.3660886,
+author = {Tabaza, Abdulrahman and Quishawi, Omar and Yaghi, Abdelrahman and Qawasmeh, Omar},
+title = {Binding Text, Images, Graphs, and Audio for Music Representation Learning},
+year = {2024},
+isbn = {9798400716928},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3660853.3660886},
+doi = {10.1145/3660853.3660886},
+abstract = {Abstract In the field of Information Retrieval and Natural Language Processing, text embeddings play a significant role in tasks such as classification, clustering, and topic modeling. However, extending these embeddings to abstract concepts such as music, which involves multiple modalities, presents a unique challenge. Our work addresses this challenge by integrating rich multi-modal data into a unified joint embedding space. This space includes: (1) textual, (2) visual, (3) acoustic, and (4) graph-based modality features. By doing so, we mirror cognitive processes associated with music interaction and overcome the disjoint nature of individual modalities. The resulting joint low-dimensional vector space facilitates retrieval, clustering, embedding space arithmetic, and cross-modal retrieval tasks. Importantly, our approach carries implications for music information retrieval and recommendation systems. Furthermore, we propose a novel multi-modal model that integrates various data types—text, images, graphs, and audio—for music representation learning. Our model aims to capture the complex relationships between different modalities, enhancing the overall understanding of music. By combining textual descriptions, visual imagery, graph-based structures, and audio signals, we create a comprehensive representation that can be leveraged for a wide range of music-related tasks. Notably, our model demonstrates promising results in music classification, and recommendation systems. Code Availability: The source code for the multi-modal music representation model described in this paper is available on GitHub. Access and further details can be found at the following repository link: //github.com/a-tabaza/binding_music/},
+booktitle = {Proceedings of the Cognitive Models and Artificial Intelligence Conference},
+pages = {139–146},
+numpages = {8},
+location = {undefinedstanbul, Turkiye},
+series = {AICCONF '24}
+}
